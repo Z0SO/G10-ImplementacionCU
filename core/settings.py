@@ -23,7 +23,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 
-
+# apps de django
 DJANGO_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -33,17 +33,23 @@ DJANGO_APPS = [
     'django.contrib.staticfiles',
 ]
 
+# apps externas
 THIRD_PARTY_APPS = [
     'rest_framework',
-    
+    'rest_framework_simplejwt',
 ]
 
+
+# apps locales
 LOCAL_APPS = [
+    # asignar vehiculo a mecanico
     'avm',
-    'accounts', # accounts contendra la app del director tecnico
+   
+    # accounts contendra la app del director tecnico
+    'accounts',
 ]
 
-
+# Junto todo en una sola lista
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
 
 
@@ -111,9 +117,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/5.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+# LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+LANGUAGE_CODE = 'es'
+
+# El timezone debe ser de la hora de Buenos Aires (GMT-3)
+TIME_ZONE = 'America/Argentina/Buenos_Aires'
+
+# TIME_ZONE = 'UTC'
 
 USE_I18N = True
 
@@ -143,7 +154,7 @@ REST_FRAMEWORK = {
 
 
 
-
+# Configuracion de JWT
 SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(minutes=5),
     'REFRESH_TOKEN_LIFETIME': timedelta(days=1),
@@ -172,8 +183,4 @@ SIMPLE_JWT = {
     'BLACKLIST_AFTER_ROTATION': True,
 
 }
-
-
-
-
 
