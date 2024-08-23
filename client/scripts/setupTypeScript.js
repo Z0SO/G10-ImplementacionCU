@@ -1,7 +1,8 @@
 // @ts-check
+// j
 
 /** This script modifies the project to support TS code in .svelte files like:
-
+ * asdfasdfjasdfsdf
   <script lang="ts">
   	export let name: string;
   </script>
