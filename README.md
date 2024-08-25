@@ -20,8 +20,7 @@
 - para ver el json de los vehiculos -> ``/api/vehiculos/``
 
 
-
-### Ejecutar el proyecto en Local
+### Backend: Ejecutar el proyecto en Local
 
 1. Clonar el repositorio
 
@@ -71,3 +70,18 @@ python manage.py runserver
 Luego ingresas a la URL que por lo general es el localhost:8000
 
 
+### Frontend: Ejecutar el proyecto en Local
+
+Si ya clonaste el repositorio y estas en la carpeta del proyecto, sigue los siguientes pasos:
+
+dirigete a la carpeta `client`  con `cd client` y ejecutas el siguiente comando:
+
+```bash
+npm install
+```
+
+Luego de que termine de instalar las dependencias, ejecutas el siguiente comando:
+
+```bash
+npm run dev
+```

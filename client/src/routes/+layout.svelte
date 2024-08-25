@@ -3,12 +3,11 @@
   
   import Navbar from '../components/Navbar.svelte';
 
-
 </script>
 
-<div
->
+<div>
   <Navbar />
+
 </div>
 
 <main>

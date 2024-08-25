@@ -1,78 +1,91 @@
 
-<nav class="bg-white border border-gray-200 dark:border-gray-700 px-2 sm:px-4 py-2.5 rounded dark:bg-gray-800 shadow">
-  <div class="container flex flex-wrap justify-between items-center mx-auto">
-    <a href="/" class="flex items-center">
-      <span class="self-center text-xl font-semibold whitespace-nowrap dark:text-white">
-        Sistema
-      </span>
+<script>
+  let isOpen = false;
+
+  function toggleSidebar() {
+    isOpen = !isOpen;
+  }
+</script>
+
+<style>
+  .drawer {
+    transition: transform 0.3s ease;
+  }
+  .drawer-open {
+    transform: translateX(0);
+  }
+  .drawer-closed {
+    transform: translateX(-100%);
+  }
+</style>
+
+<!-- Sidebar component -->
+<div
+  class={`fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto bg-white dark:bg-gray-800 drawer ${isOpen ? 'drawer-open' : 'drawer-closed'}`}
+  tabindex="-1"
+  aria-labelledby="drawer-navigation-label"
+>
+  <h5 id="drawer-navigation-label" class="text-base font-semibold text-gray-500 uppercase dark:text-gray-400">Menu</h5>
+  <button
+    type="button"
+    on:click={toggleSidebar}
+    aria-controls="drawer-navigation"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+  >
+    <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+      <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+    </svg>
+    <span class="sr-only">Close menu</span>
+  </button>
+  <div class="py-4 overflow-y-auto">
+    <ul class="space-y-2 font-medium">
+      <li>
+        <a href="/" class="flex items-center p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700 group">
+          <svg class="w-5 h-5 text-gray-500 transition duration-75 dark:text-gray-400 group-hover:text-gray-900 dark:group-hover:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 22 21">
+            <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
+            <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
+          </svg>
+          <span class="ms-3">Dashboard</span>
+        </a>
+      </li>
+      <!-- Repeat similar structure for other menu items -->
+    </ul>
+  </div>
+</div>
+
+<!-- Navbar -->
+<nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700">
+  <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
+    <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
+      <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sistema</span>
     </a>
-
-    <div class="flex items-center">
-      <button
-        id="menu-toggle"
-        type="button"
-        class="inline-flex items-center p-2 ml-3 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600 md:hidden"
-      >
-        <span class="sr-only">Open main menu</span>
-        <!-- Hamburger icon -->
-        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M4 6h16M4 12h16m-7 6h7"
-          />
-        </svg>
-      </button>
-    </div>
-
-    <div
-      class="w-full md:block md:w-auto hidden"
-      id="mobile-menu"
-    >
-      <ul class="flex flex-col mt-4 md:flex-row md:space-x-8 md:mt-0 md:text-sm md:font-medium">
+    <div class="hidden w-full md:block md:w-auto" id="navbar-solid-bg">
+      <ul class="flex flex-col font-medium mt-4 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-transparent dark:bg-gray-800 md:dark:bg-transparent dark:border-gray-700">
         <li>
-          <a
-            href="/"
-            class="block py-2 pr-4 pl-3 text-gray-700 rounded md:bg-transparent md:p-0 dark:text-white hover:text-orange-500"
-            aria-current="page"
-          >
-            Home
-          </a>
+          <a href="/" class="block py-2 px-3 md:p-0 text-white bg-blue-700 rounded md:bg-transparent md:text-blue-700 md:dark:text-blue-500 dark:bg-blue-600 md:dark:bg-transparent" aria-current="page">Home</a>
         </li>
         <li>
-          <a
-            href="/"
-            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-orange-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-          >
-            About
-          </a>
+          <a href="/services" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Services</a>
         </li>
         <li>
-          <a
-            href="/"
-            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-orange-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-          >
-            Services
-          </a>
+          <a href="/pricing" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a>
         </li>
         <li>
-          <a
-            href="/"
-            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-orange-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-          >
-            Pricing
-          </a>
-        </li>
-        <li>
-          <a
-            href="/"
-            class="block py-2 pr-4 pl-3 text-gray-700 border-b border-gray-100 hover:bg-orange-500 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-gray-400 md:dark:hover:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
-          >
-            Contact
-          </a>
+          <a href="/contact" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a>
         </li>
       </ul>
     </div>
+    <!-- Button to open the sidebar, placed at the end of the navbar -->
+    <button
+      type="button"
+      on:click={toggleSidebar}
+      aria-controls="drawer-navigation"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+    >
+      <span class="sr-only">Open sidebar</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+    </button>
   </div>
 </nav>
