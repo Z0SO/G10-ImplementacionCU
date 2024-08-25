@@ -1,14 +1,8 @@
 
 <h1>Pagina principal</h1>
 
-<p>Esta es la pagina principal</p>
+<h2
+>
+  Pagina principal
+</h2>
 
-<style>
-  h1 {
-    color: blue;
-  }
-  
-  p {
-    color: red;
-  }
-</style>

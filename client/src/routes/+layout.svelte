@@ -1,18 +1,17 @@
 
 <script>
+  
   import Navbar from '../components/Navbar.svelte';
 
 
 </script>
 
-<Navbar />
+<div
+>
+  <Navbar />
+</div>
 
 <main>
   <slot></slot>
 </main>
 
-<style>
-  main {
-    padding: 1rem;
-  }
-</style>
