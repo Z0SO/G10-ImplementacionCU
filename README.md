@@ -1,7 +1,31 @@
 
 # GRUPO 10 - Diseño de Sistemas
 
-> Caso de Uso a implementar: Asignar Turno a Mecanico
+## Super Importante antes de empezar
+
+Para agregar alguna colaboracion al proyec  debes seguir los siguientes pasos:
+
+Siempre que vayas a trabajar en una nueva funcionalidad, debes crear una nueva rama con el nombre de la funcionalidad que vas a implementar, por ejemplo:
+
+> suponiendo que tienes clonado el repositorio y estas en la rama `master`
+
+```bash
+git checkout -b <integrante>-<nombre_de_la_funcionalidad>
+```
+reemplazando `<integrante>` por tu nombre y `<nombre_de_la_funcionalidad>` por el nombre de la funcionalidad que vas a implementar.
+
+ejemplo:
+
+```bash
+git checkout -b lautaro-pagina_de_turnos
+```
+
+Listo, ahora puedes empezar a trabajar en tu funcionalidad.
+
+----
+
+
+## Caso de Uso a implementar: Asignar Turno a Mecanico
 
 ##### Aca te dejo las rutas accesibles desde el backend
 
