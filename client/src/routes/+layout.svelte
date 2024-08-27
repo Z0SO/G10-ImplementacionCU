@@ -1,13 +1,12 @@
 
 <script>
   
-  import Navbar from '../components/Navbar.svelte';
+  import Navbar from '../components/layout/Navbar.svelte';
 
 </script>
 
 <div>
   <Navbar />
-
 </div>
 
 <main>

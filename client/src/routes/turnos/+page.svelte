@@ -1,2 +1,7 @@
 <h1>Turnos</h1>
-<p>Aquí puedes gestionar tus turnos.</p>
+
+
+
+<a href="/turnos/create">
+  <span>CrearTurno</span>
+</a>
