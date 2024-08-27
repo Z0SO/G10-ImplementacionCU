@@ -1,10 +1,30 @@
 
 <script>
+  import { onMount } from 'svelte';
+
   let isOpen = false;
+  let isDarkMode = false;
 
   function toggleSidebar() {
     isOpen = !isOpen;
   }
+
+  function toggleTheme() {
+    isDarkMode = !isDarkMode;
+    document.documentElement.classList.toggle('dark', isDarkMode);
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  }
+
+  onMount(() => {
+    if (localStorage.getItem('theme') === 'dark' || 
+        (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      isDarkMode = true;
+      document.documentElement.classList.add('dark');
+    } else {
+      isDarkMode = false;
+      document.documentElement.classList.remove('dark');
+    }
+  });
 </script>
 
 <style>
@@ -19,7 +39,7 @@
   }
 </style>
 
-<!-- Sidebar component -->
+<!-- Sidebar -->
 <div
   class={`fixed top-0 left-0 z-40 w-64 h-screen p-4 overflow-y-auto bg-white dark:bg-gray-800 drawer ${isOpen ? 'drawer-open' : 'drawer-closed'}`}
   tabindex="-1"
@@ -30,7 +50,7 @@
     type="button"
     on:click={toggleSidebar}
     aria-controls="drawer-navigation"
-    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 end-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
+    class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm p-1.5 absolute top-2.5 right-2.5 inline-flex items-center dark:hover:bg-gray-600 dark:hover:text-white"
   >
     <svg aria-hidden="true" class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
       <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
@@ -45,16 +65,24 @@
             <path d="M16.975 11H10V4.025a1 1 0 0 0-1.066-.998 8.5 8.5 0 1 0 9.039 9.039.999.999 0 0 0-1-1.066h.002Z"/>
             <path d="M12.5 0c-.157 0-.311.01-.565.027A1 1 0 0 0 11 1.02V10h8.975a1 1 0 0 0 1-.935c.013-.188.028-.374.028-.565A8.51 8.51 0 0 0 12.5 0Z"/>
           </svg>
-          <span class="ms-3">Dashboard</span>
+          <span class="ml-3">Dashboard</span>
         </a>
       </li>
-      <!-- Repeat similar structure for other menu items -->
+      <!-- Agregar más ítems del menú aquí -->
+      <li>
+        <button
+          on:click={toggleTheme}
+          class="w-full text-left p-2 text-gray-900 rounded-lg dark:text-white hover:bg-gray-100 dark:hover:bg-gray-700"
+        >
+          {isDarkMode ? 'Modo Claro' : 'Modo Oscuro'}
+        </button>
+      </li>
     </ul>
   </div>
 </div>
 
 <!-- Navbar -->
-<nav class="border-gray-200 bg-gray-50 dark:bg-gray-800 dark:border-gray-700 mb-10">
+<nav class="border-gray-400 bg-gray-200 dark:bg-gray-800 dark:border-gray-700 mb-20">
   <div class="max-w-screen-xl flex flex-wrap items-center justify-between mx-auto p-4">
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <span class="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Sistema</span>
@@ -67,18 +95,9 @@
         <li>
           <a href="/turnos" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Turnos</a>
         </li>
-        
-        <!-- <li> -->
-        <!--   <a href="/pricing" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Pricing</a> -->
-        <!-- </li> -->
-        <!-- <li> -->
-        <!--   <a href="/contact" class="block py-2 px-3 md:p-0 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent">Contact</a> -->
-        <!-- </li> -->
-    
-
       </ul>
     </div>
-    <!-- Button to open the sidebar, placed at the end of the navbar -->
+    <!-- Button to open the sidebar -->
     <button
       type="button"
       on:click={toggleSidebar}
