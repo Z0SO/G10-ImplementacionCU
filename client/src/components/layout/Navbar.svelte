@@ -10,11 +10,22 @@
   }
 
   function toggleTheme() {
+    const htmlElement = document.documentElement;
+    
+    if (htmlElement.classList.contains('dark')) {
+      htmlElement.classList.remove('dark');
+      htmlElement.classList.add('light');
+      localStorage.setItem('theme', 'light');
+    } else {
+      htmlElement.classList.add('dark');
+      htmlElement.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
+    }
     isDarkMode = !isDarkMode;
-    document.documentElement.classList.toggle('dark', isDarkMode);
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
   }
 
+
+  // cuando se monta el componente, esta funcion se encargara de verificar si el usuario tiene el tema oscuro activado
   onMount(() => {
     if (localStorage.getItem('theme') === 'dark' || 
         (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
@@ -37,6 +48,11 @@
   .drawer-closed {
     transform: translateX(-100%);
   }
+
+
+
+
+
 </style>
 
 <!-- Sidebar -->
