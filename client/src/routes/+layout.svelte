@@ -5,11 +5,21 @@
 
 </script>
 
-<div>
+<div 
+  class="sombra-div-nav"
+>
   <Navbar />
 </div>
 
-<main>
+<main
+>
   <slot></slot>
 </main>
+
+<style>
+  .sombra-div-nav {
+    box-shadow: 0 4px 20px;
+  }
+
+</style>
 
