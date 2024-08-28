@@ -27,6 +27,7 @@
     };
 </script>
 
+
 <form on:submit|preventDefault={handleSubmit} class="max-w-md mx-auto p-4 mt-16 bg-white dark:bg-gray-800 rounded-lg">
     <div class="mb-4">
         <label for="nombre" class="block text-sm font-medium text-gray-900 dark:text-white">Nombre</label>
