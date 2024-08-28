@@ -2,9 +2,6 @@
 <script>
   
   import Navbar from '../components/layout/Navbar.svelte';
-  
-
-
 </script>
 
 <div 
@@ -13,8 +10,7 @@
   <Navbar />
 </div>
 
-<main
->
+<main>
   <slot></slot>
 </main>
 
