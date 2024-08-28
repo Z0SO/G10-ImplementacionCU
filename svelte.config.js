@@ -1,5 +1,7 @@
-import adapter from '@sveltejs/adapter-auto';
+import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
+export default config;
+
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -8,13 +10,15 @@ const config = {
   preprocess: preprocess(),
 
   kit: {
-    // adapter-auto only supports some environments, see https://kit.svelte.dev/docs/adapters
-    // for a full list of supported environments
-    adapter: adapter(),
-
-    // hydrate the <div id="svelte"> element in src/app.html
-    // target is no longer used in recent versions, so it should be removed
+    adapter: adapter({
+      // default options are shown
+      pages: 'build',
+      assets: 'build',
+      fallback: null,
+      precompress: false,
+      strict: true
+    }),
   }
 };
 
-export default config;
+
