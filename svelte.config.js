@@ -1,7 +1,5 @@
 import adapter from '@sveltejs/adapter-static';
 import preprocess from 'svelte-preprocess';
-export default config;
-
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -22,3 +20,4 @@ const config = {
 };
 
 
+export default config;
