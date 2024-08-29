@@ -1,7 +1,30 @@
-
 # GRUPO 10 - Diseño de Sistemas
 
-> Caso de Uso a implementar: Asignar Turno a Mecanico
+## Super Importante antes de empezar
+
+Para agregar alguna colaboracion al proyec  debes seguir los siguientes pasos:
+
+Siempre que vayas a trabajar en una nueva funcionalidad, debes crear una nueva rama con el nombre de la funcionalidad que vas a implementar, por ejemplo:
+
+> suponiendo que tienes clonado el repositorio y estas en la rama `master`
+
+```bash
+git checkout -b <integrante>-<nombre_de_la_funcionalidad>
+```
+reemplazando `<integrante>` por tu nombre y `<nombre_de_la_funcionalidad>` por el nombre de la funcionalidad que vas a implementar.
+
+ejemplo:
+
+```bash
+git checkout -b lautaro-pagina_de_turnos
+```
+
+Listo, ahora puedes empezar a trabajar en tu funcionalidad.
+
+----
+
+
+## Caso de Uso a implementar: Asignar Turno a Mecanico
 
 ##### Aca te dejo las rutas accesibles desde el backend
 
@@ -20,8 +43,7 @@
 - para ver el json de los vehiculos -> ``/api/vehiculos/``
 
 
-
-### Ejecutar el proyecto en Local
+### Backend: Ejecutar el proyecto en Local
 
 1. Clonar el repositorio
 
@@ -71,3 +93,18 @@ python manage.py runserver
 Luego ingresas a la URL que por lo general es el localhost:8000
 
 
+### Frontend: Ejecutar el proyecto en Local
+
+Si ya clonaste el repositorio y estas en la carpeta del proyecto, sigue los siguientes pasos:
+
+dirigete a la carpeta `client`  con `cd client` y ejecutas el siguiente comando:
+
+```bash
+npm install
+```
+
+Luego de que termine de instalar las dependencias, ejecutas el siguiente comando:
+
+```bash
+npm run dev
+```
