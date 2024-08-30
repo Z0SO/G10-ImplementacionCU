@@ -1,8 +1,21 @@
+
 {
-    "env": {
-        "BRANCH": "CU-deploy"
-    },
-    "scripts": {
-        "vercel-deploy": "if [ "$BRANCH" != "main" ]; then echo "Cannot deploy from $BRANCH branch"; exit 1; fi"
+  "env": {
+    "BRANCH": "CU-deploy"
+  },
+  "scripts": {
+    "vercel-deploy": "if [ \"$VERCEL_GIT_COMMIT_REF\" != \"CU-deploy\" ]; then echo \"Skipping deploy for branch $VERCEL_GIT_COMMIT_REF\"; exit 0; fi"
+  },
+  "builds": [
+    {
+      "src": "svelte.config.js",
+      "use": "@sveltejs/adapter-vercel"
     }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/"
+    }
+  ]
 }
